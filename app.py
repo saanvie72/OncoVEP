@@ -95,3 +95,26 @@ if uploaded_file is not None:
     )
 else:
     st.info("Please upload a `.txt` or `.vcf` file to view summary statistics.")
+
+
+
+GENOMES = {
+    "GRCh37 (hg19)": "GRCh37",
+    "GRCh38 (hg38)": "GRCh38",
+}
+ 
+ 
+def genome_selector(default="GRCh38"):
+    labels = list(GENOMES.keys())
+    default_index = list(GENOMES.values()).index(default)
+ 
+    with st.container(border=True):
+        choice = st.selectbox("Reference genome", labels, index=default_index)
+        genome = GENOMES[choice]
+        st.write(f"Selected: **{genome}**")
+ 
+    return genome
+ 
+ 
+
+    
